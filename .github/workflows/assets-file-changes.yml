@@ -2,7 +2,7 @@ name: Monitor Folder for Changes to run script
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'src/assets/**'
 jobs:
@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Run script
       run: |
-        if [ -n "$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} 'your-folder/')" ]; then
+        if [ -n "$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} 'src/assets/')" ]; then
           bash i-did-it.sh
         else
           echo "No changes in the specified folder."
