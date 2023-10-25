@@ -3,11 +3,12 @@ on:
   push:
     branches:
       - master
-      paths:
+    paths:
       - 'assets/**'
 jobs:
-run_script:
-  steps:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Run script
@@ -16,5 +17,3 @@ run_script:
           bash i-did-it.sh
         else
           echo "No changes in the specified folder."
-        fi
-```
